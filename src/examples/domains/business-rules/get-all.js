@@ -1,4 +1,4 @@
-const GetModel = require('../../../models/get-model.js')
+const GetModel = require('../../../get-model.js')
 
 const getAll = async ( req, query={}, options ) => {
   const model = GetModel( req.$connection, req.$model )

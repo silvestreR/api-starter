@@ -1,4 +1,4 @@
-const GetModel = require('../../../models/get-model.js')
+const GetModel = require('../../../get-model.js')
 
 const Path = require('path')
 const thisDomain = Path.dirname( Path.dirname( __filename ) ).split( Path.sep ).pop()

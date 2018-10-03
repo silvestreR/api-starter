@@ -1,4 +1,4 @@
-const GetModel = require('../../../models/get-model.js')
+const GetModel = require('../../../get-model.js')
 
 const deleteById = async ( req, query ) => {
   const model = GetModel(req.$connection, req.$model)

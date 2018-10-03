@@ -1,10 +1,10 @@
 const Path = require('path')
-const thisModel = Path.dirname( Path.dirname( __filename ) ).split( Path.sep ).pop()
+const thisModel = Path.dirname( Path.dirname( Path.dirname( __filename ) ) ).split( Path.sep ).pop()
 const GetModel = require('../../../get-model.js')
 const thisHandler = Path.basename( __filename ).split( '.' )[ 0 ]
 
 const updateById = async (req, res, next) => {
-  const BusinessRules = require(`../../../domains/${ thisModel }/business-rules/${ thisHandler}.js`)
+  const BusinessRules = require(`../../domains/business-rules/${thisHandler}.js`)
   const query = {
     _id: req.params.id
   }

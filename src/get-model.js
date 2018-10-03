@@ -1,15 +1,18 @@
+const pluralize = require('pluralize')
 const Mongoose = require( 'mongoose' )
 const Schema = Mongoose.Schema
 const { capitalize } = require( 'lodash' )
 const Path = require('path')
 
 const getModelSchema = modelToGet => {
-  const model = require(`./${modelToGet}.models.js`)( Schema )
+
+  const pluralNameModel = pluralize.plural( modelToGet )
+  const model = require( `./${ pluralNameModel }/domains/models/${ modelToGet }.js` )( Schema )
   return new Schema( model, {timestamps: true} )
 }
 
 const getSingularCollectionName = ( modelName ) =>
-  ( modelName ) ? modelName.slice( 0, modelName.length - 1 ) : ''
+  ( modelName ) ? pluralize.singular(modelName) : ''
 
 const getModel = ( connection, modelToGet = '' ) => {
   const singularModelName = getSingularCollectionName( modelToGet )
