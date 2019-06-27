@@ -25,7 +25,7 @@ const authenticate = async ( req, res, next ) => {
   }
 
   const authentication = await AuthModel.findOne({ token: reqToken })
-  if ( !authentication ){
+  if ( !authentication || (authentication && authentication.expire && (Date.now() > authentication.expire)) ){
     const errorMessage = 'authError: this token is not active.'
     res.send( 500, errorMessage )
     return next( false )
