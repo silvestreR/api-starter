@@ -17,6 +17,17 @@ const createServer = ( serverOptions ) => {
   server.use( Restify.plugins.queryParser( { mapParams: true } ) )
   server.use( Restify.plugins.gzipResponse( ) )
 
+  const RestifyCorsMiddleware = require('restify-cors-middleware')
+
+  const cors = RestifyCorsMiddleware({
+    origins: ['*', /^https?:\/\/localhost(:[\d]+)?$/, /^https?:\/\/0.0.0.0(:[\d]+)?$/],
+    allowHeaders: ['API-Token', 'client', 'Authorization'],
+    exposeHeaders: ['API-Token-Expiry']
+  })
+
+  server.pre(cors.preflight)
+  server.use(cors.actual)
+
   const getClientMiddleware = require('../middlewares/get-client.middlewares.js')
   server.use( getClientMiddleware )
 
