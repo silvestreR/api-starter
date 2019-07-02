@@ -6,8 +6,8 @@ const GetModel = require('../../../get-model.js')
 const resetPassword = async (req, query, data ) => {
   const AuthModel = GetModel( req.$connection, 'authentications')
   const model = GetModel( req.$connection, 'users')
-  data.password = EncryptText( data.password )
-  const newValues  = { $set: { ...data } }
+  const password = EncryptText( data.password )
+  const newValues  = { $set: { password } }
   const foundToken = await AuthModel.findOne(query)
   if (!foundToken) throw new Error('tokenError: Token Invalid')
   const queryUser = {

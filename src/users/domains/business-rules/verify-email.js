@@ -56,13 +56,13 @@ const verifyEmail = async ( req, query ) => {
   const smtpTransport = Nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: 'piumatecnologia@gmail.com',
-      pass: 'mestra#$*JUN19'
+      user: process.env.GMAIL,
+      pass: process.env.GMAILPW
     }
   })
   const mailOptions = {
     to: user.email,
-    from: 'piumatecnologia@gmail.com',
+    from: process.env.GMAIL,
     subject: 'Alteração de Senha',
     text: `Clique no link abaixo para recuperar sua senha!\n http://localhost:8080/#/auth/reset-password/${req.$token}`
   }
