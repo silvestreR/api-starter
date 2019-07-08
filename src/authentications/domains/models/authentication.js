@@ -6,5 +6,6 @@ const model = ( Schema ) => ({
 	, platformOS: { type: String, required: true }
 	, createdAt: { type: Date }
 	, updatedAt: { type: Date }
+	, expire: {type: Number}
 })
 module.exports = model
