@@ -4,6 +4,7 @@ const GetModel = require('../../../get-model.js')
 const thisHandler = Path.basename( __filename ).split( '.' )[ 0 ]
 
 const resetPassword = async (req, res, next) => {
+      console.log('testeteee')
   const BusinessRules = require(`../../domains/business-rules/${thisHandler}.js`)
   const query = {
     token: req.params.token
