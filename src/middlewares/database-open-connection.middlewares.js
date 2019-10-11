@@ -5,7 +5,7 @@ const start = ( uri ) => {
     console.log(`An error has occurred when trying to start the MongoDB Database for URI:\n${ uri }`, err )
 
   const mongoConnectionOptions = {
-    poolSize: 5, useNewUrlParser: true
+    poolSize: 5, useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
   }
 
   const conn = Mongoose.createConnection( uri, mongoConnectionOptions )
