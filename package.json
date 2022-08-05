@@ -38,7 +38,7 @@
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "moment": "^2.20.1",
-    "mongoose": "^5.7.4",
+    "mongoose": "^5.7.5",
     "nodemailer": "^6.2.1",
     "pluralize": "^7.0.0",
     "restify": "^8.4.0",
